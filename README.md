@@ -1,2 +1,5 @@
 # desafio_mv
-Desafio MV
+
+Projeto criado utilizando as tecnologias spring e gradlew.
+
+
