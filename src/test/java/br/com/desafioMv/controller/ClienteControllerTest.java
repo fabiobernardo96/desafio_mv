@@ -1,8 +1,6 @@
-package br.com.desafiomv.controller;
+package br.com.desafioMv.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-
-import java.sql.Timestamp;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -17,7 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.desafioMv.model.Cliente;
-import br.com.desafioMv.model.enums.SexType;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -35,8 +32,8 @@ public class ClienteControllerTest {
 		cliente = new Cliente();
 		cliente.setNome("Fabio Bernardo");
 		cliente.setEmail("fabio.bernardo96@gmail.com");
-		cliente.setTelefone(5581998815345);
-		cliente.setCpfCnpj(11363879420);
+		cliente.setTelefone(5581998815345L);
+		cliente.setCpfCnpj(11363879420L);
 	}
 
 	@Test
