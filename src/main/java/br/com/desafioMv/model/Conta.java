@@ -13,10 +13,12 @@ public class Conta implements Serializable {
 
 	private int id;
 
-	private String nome;
+	private String numero;
 
 	private int saldo;
 
 	private int idCliente;
+
+	private String active;
 		
 }

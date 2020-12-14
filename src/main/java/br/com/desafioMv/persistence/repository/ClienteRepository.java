@@ -37,10 +37,9 @@ public class ClienteRepository implements ClienteDAO {
 	@Override
 	public int update(Cliente cliente) {
 
-		String sql = "UPDATE CLIENTE SET NOME = ?, EMAIL = ?, TELEFONE = ?, CPF_CNOJ = ? WHERE ID = ?";
+		String sql = "UPDATE CLIENTE SET NOME = ?, EMAIL = ?, TELEFONE = ? WHERE ID = ?";
 		
-		
-		return jdbc.update(sql, cliente.getId(), cliente.getNome(), cliente.getEmail(), cliente.getTelefone(), cliente.getCpfCnpj() );
+		return jdbc.update(sql, cliente.getId(), cliente.getNome(), cliente.getEmail(), cliente.getTelefone() );
 		
 	}
 	

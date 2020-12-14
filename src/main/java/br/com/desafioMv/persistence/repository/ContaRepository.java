@@ -19,16 +19,16 @@ public class ContaRepository implements ContaDAO {
 	@Override
 	public int insert(Conta conta) {
 
-		String sql = "INSERT INTO CONTA (NOME, SALDO, ID_CLIENTE) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO CONTA (NUMERO, SALDO, ID_CLIENTE, ACTIVE) VALUES (?, ?, ?, ?)";
 
-		return jdbc.update(sql, conta.getNome(), conta.getSaldo(), conta.getIdCliente());
+		return jdbc.update(sql, conta.getNumero(), conta.getSaldo(), conta.getIdCliente(), conta.getActive());
 
 	}
 
 	@Override
 	public int delete(Conta conta) {
 
-		String sql = "DELETE FROM CONTA WHERE ID = ?";
+		String sql = "UPDATE FROM CONTA SET ACTIVE = 'N' WHERE ID = ?";
 
 		return jdbc.update(sql, conta.getId());
 
@@ -37,9 +37,9 @@ public class ContaRepository implements ContaDAO {
 	@Override
 	public int update(Conta conta) {
 
-		String sql = "UPDATE CONTA SET NOME = ?, SALDO = ? WHERE ID = ?";
+		String sql = "UPDATE CONTA SET SALDO = ? WHERE ID = ?";
 
-		return jdbc.update(sql, conta.getNome(), conta.getSaldo());
+		return jdbc.update(sql, conta.getSaldo());
 
 	}
 

@@ -10,18 +10,21 @@ public class ContaDTO {
 
 	private int id;
 
-	private String nome;
+	private String numero;
 
 	private int saldo;
 
 	private int idCliente;
 
+	private String active;
+
 	public ContaDTO(Conta conta) {
 
 		this.id = conta.getId();
-		this.nome = conta.getNome();
+		this.numero = conta.getNumero();
 		this.saldo = conta.getSaldo();
 		this.idCliente = conta.getIdCliente();
+		this.active = conta.getActive();
 
 	}
 

@@ -19,9 +19,9 @@ public class EmpresaRepository implements EmpresaDAO {
 	@Override
 	public int insert(Empresa empresa) {
 
-		String sql = "INSERT INTO EMPRESA (SALDO, NOME) VALUES (?, ?)";
+		String sql = "INSERT INTO EMPRESA (NOME, SALDO) VALUES (?, ?)";
 
-		return jdbc.update(sql, empresa.getSaldo(), empresa.getNome() );
+		return jdbc.update(sql, empresa.getNome(), empresa.getSaldo() );
 
 	}
 
@@ -37,9 +37,9 @@ public class EmpresaRepository implements EmpresaDAO {
 	@Override
 	public int update(Empresa empresa) {
 
-		String sql = "UPDATE EMPRESA SET SALDO = ?, NOME = ? WHERE ID = ?";
+		String sql = "UPDATE EMPRESA SET SALDO = ? WHERE ID = ?";
 
-		return jdbc.update(sql, empresa.getSaldo(), empresa.getNome());
+		return jdbc.update(sql, empresa.getSaldo() );
 
 	}
 
