@@ -19,7 +19,7 @@ public class EnderecoRepository implements EnderecoDAO {
 	@Override
 	public int insert(Endereco endereco) {
 
-		String sql = "INSERT INTO ENDERECO (RUA, NUMERO, BAIRRO, CIDADE, ESTADO, PAIS, CEP, ID_CLIENTE) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO ENDERECO (ID, RUA, NUMERO, BAIRRO, CIDADE, ESTADO, PAIS, CEP, ID_CLIENTE) VALUES (seq_endereco.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		return jdbc.update(sql,
 							endereco.getRua(), endereco.getNumero(), endereco.getBairro(), endereco.getCidade(),

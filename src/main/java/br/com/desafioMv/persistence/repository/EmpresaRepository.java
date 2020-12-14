@@ -19,7 +19,7 @@ public class EmpresaRepository implements EmpresaDAO {
 	@Override
 	public int insert(Empresa empresa) {
 
-		String sql = "INSERT INTO EMPRESA (NOME, SALDO) VALUES (?, ?)";
+		String sql = "INSERT INTO EMPRESA (ID, NOME, SALDO) VALUES (seq_empresa.nextval, ?, ?)";
 
 		return jdbc.update(sql, empresa.getNome(), empresa.getSaldo() );
 

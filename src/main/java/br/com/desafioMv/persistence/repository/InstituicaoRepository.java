@@ -19,7 +19,7 @@ public class InstituicaoRepository implements InstituicaoDAO {
 	@Override
 	public int insert(Instituicao instituicao) {
 
-		String sql = "INSERT INTO INSTITUICAO (NOME) VALUES (?)";
+		String sql = "INSERT INTO INSTITUICAO (ID, NOME) VALUES (seq_instituicao.nextval, ?)";
 
 		return jdbc.update(sql, instituicao.getNome());
 

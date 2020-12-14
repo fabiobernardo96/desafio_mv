@@ -30,10 +30,15 @@ public class ClienteControllerTest {
 	public static void setUp() {
 
 		cliente = new Cliente();
-		cliente.setNome("Fabio Bernardo");
-		cliente.setEmail("fabio.bernardo96@gmail.com");
-		cliente.setTelefone(5581998815345L);
-		cliente.setCpfCnpj(11363879420L);
+		cliente.setNome("Fabio");
+		cliente.setEmail("fabio");
+		cliente.setTelefone(55L);
+		cliente.setCpfCnpj(11L);
+		
+		//cliente.setNome("Fabio Bernardo");
+		//cliente.setEmail("fabio.bernardo96@gmail.com");
+		//cliente.setTelefone(5581998815345L);
+		//cliente.setCpfCnpj(11363879420L);
 	}
 
 	@Test

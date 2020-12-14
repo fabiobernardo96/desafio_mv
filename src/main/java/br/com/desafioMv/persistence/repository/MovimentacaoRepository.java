@@ -19,7 +19,7 @@ public class MovimentacaoRepository implements MovimentacaoDAO {
 	@Override
 	public int insert(Movimentacao movimentacao) {
 
-		String sql = "INSERT INTO MOVIMENTACAO (DATA, ID_CONTA, VALOR, TIPO) VALUES (SYSDATE, ?, ?, ?)";
+		String sql = "INSERT INTO MOVIMENTACAO (ID, DATA, ID_CONTA, VALOR, TIPO) VALUES (seq_movimentacao.nextval, SYSDATE, ?, ?, ?)";
 
 		return jdbc.update(sql, movimentacao.getData(), movimentacao.getIdConta(),  movimentacao.getValor(), movimentacao.getTipo() );
 

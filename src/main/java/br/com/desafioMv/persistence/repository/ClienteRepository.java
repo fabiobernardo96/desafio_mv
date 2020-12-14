@@ -19,7 +19,7 @@ public class ClienteRepository implements ClienteDAO {
 	@Override
 	public int insert(Cliente cliente) {
 
-		String sql = "INSERT INTO CLIENTE (NOME, EMAIL, TELEFONE, CPF_CNPJ) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO CLIENTE (ID, NOME, EMAIL, TELEFONE, CPF_CNPJ) VALUES (seq_cliente.nextval, ?, ?, ?, ?)";
 		
 		return jdbc.update(sql, cliente.getNome(), cliente.getEmail(), cliente.getTelefone(), cliente.getCpfCnpj() );
 	}
