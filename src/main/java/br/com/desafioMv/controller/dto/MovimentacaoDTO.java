@@ -13,6 +13,8 @@ public class MovimentacaoDTO {
 
 	private Timestamp data;
 
+	private int valor;
+
 	private int idCliente;
 
 	private int idConta;
@@ -21,6 +23,7 @@ public class MovimentacaoDTO {
 
 		this.id = movimentacao.getId();
 		this.data = movimentacao.getData();
+		this.valor = movimentacao.getValor();
 		this.idCliente = movimentacao.getIdCliente();
 		this.idConta = movimentacao.getIdConta();
 

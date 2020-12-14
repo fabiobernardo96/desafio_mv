@@ -17,6 +17,8 @@ public class Movimentacao implements Serializable {
 
 	private Timestamp data;
 
+	private int valor;
+
 	private int idCliente;
 
 	private int idConta;

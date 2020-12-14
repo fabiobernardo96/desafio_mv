@@ -19,9 +19,9 @@ public class MovimentacaoRepository implements MovimentacaoDAO {
 	@Override
 	public int insert(Movimentacao movimentacao) {
 
-		String sql = "INSERT INTO MOVIMENTACAO (DATA, ID_CLIENTE, ID_CONTA) VALUES (SYSDATE, ?, ?)";
+		String sql = "INSERT INTO MOVIMENTACAO (DATA, VALOR, ID_CLIENTE, ID_CONTA) VALUES (SYSDATE, ?, ?)";
 
-		return jdbc.update(sql, movimentacao.getData(), movimentacao.getIdCliente(), movimentacao.getIdConta());
+		return jdbc.update(sql, movimentacao.getData(), movimentacao.getValor(), movimentacao.getIdCliente(), movimentacao.getIdConta());
 
 	}
 
@@ -37,9 +37,9 @@ public class MovimentacaoRepository implements MovimentacaoDAO {
 	@Override
 	public int update(Movimentacao movimentacao) {
 
-		String sql = "UPDATE MOVIMENTACAO SET DATA = ? WHERE ID = ?";
+		String sql = "UPDATE MOVIMENTACAO SET DATA = ?, VALOR = ? WHERE ID = ?";
 
-		return jdbc.update(sql, movimentacao.getData(), movimentacao.getId() );
+		return jdbc.update(sql, movimentacao.getData(), movimentacao.getValor(), movimentacao.getId() );
 
 	}
 
