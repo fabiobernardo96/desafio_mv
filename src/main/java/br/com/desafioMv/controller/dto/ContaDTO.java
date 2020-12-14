@@ -18,6 +18,8 @@ public class ContaDTO {
 
 	private String active;
 
+	private int idInstituicao;
+
 	public ContaDTO(Conta conta) {
 
 		this.id = conta.getId();
@@ -25,6 +27,7 @@ public class ContaDTO {
 		this.saldo = conta.getSaldo();
 		this.idCliente = conta.getIdCliente();
 		this.active = conta.getActive();
+		this.idInstituicao = conta.getIdInstituicao();
 
 	}
 

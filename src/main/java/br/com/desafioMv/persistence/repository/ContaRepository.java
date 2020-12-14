@@ -19,9 +19,9 @@ public class ContaRepository implements ContaDAO {
 	@Override
 	public int insert(Conta conta) {
 
-		String sql = "INSERT INTO CONTA (NUMERO, SALDO, ID_CLIENTE, ACTIVE) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO CONTA (NUMERO, SALDO, ID_CLIENTE, ACTIVE, ID_INSTITUICAO) VALUES (?, ?, ?, ?, ?)";
 
-		return jdbc.update(sql, conta.getNumero(), conta.getSaldo(), conta.getIdCliente(), conta.getActive());
+		return jdbc.update(sql, conta.getNumero(), conta.getSaldo(), conta.getIdCliente(), conta.getActive(), conta.getIdInstituicao() );
 
 	}
 

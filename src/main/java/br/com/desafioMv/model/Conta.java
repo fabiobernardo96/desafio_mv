@@ -20,5 +20,7 @@ public class Conta implements Serializable {
 	private int idCliente;
 
 	private String active;
+
+	private int idInstituicao;
 		
 }
