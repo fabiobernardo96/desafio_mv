@@ -13,22 +13,19 @@ public class MovimentacaoDTO {
 
 	private Timestamp data;
 
-	private int valorCreditado;
-
-	private int valorDebitado;
-
-	private int idCliente;
-
 	private int idConta;
+
+	private int valor;
+
+	private int tipo;
 
 	public MovimentacaoDTO(Movimentacao movimentacao) {
 
 		this.id = movimentacao.getId();
 		this.data = movimentacao.getData();
-		this.valorCreditado = movimentacao.getValorCreditado();
-		this.valorDebitado = movimentacao.getValorDebitado();
-		this.idCliente = movimentacao.getIdCliente();
 		this.idConta = movimentacao.getIdConta();
+		this.valorCreditado = movimentacao.getValor();
+		this.valorDebitado = movimentacao.getTipo();
 
 	}
 }
