@@ -24,8 +24,8 @@ public class MovimentacaoDTO {
 		this.id = movimentacao.getId();
 		this.data = movimentacao.getData();
 		this.idConta = movimentacao.getIdConta();
-		this.valorCreditado = movimentacao.getValor();
-		this.valorDebitado = movimentacao.getTipo();
+		this.valor = movimentacao.getValor();
+		this.tipo = movimentacao.getTipo();
 
 	}
 }

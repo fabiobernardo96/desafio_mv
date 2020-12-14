@@ -30,7 +30,8 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok:1.18.12'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
 	
-	compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
+    implementation 'com.oracle.database.jdbc:ojdbc8:19.6.0.0'
+    implementation 'com.oracle.database.jdbc:ucp:19.6.0.0'
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

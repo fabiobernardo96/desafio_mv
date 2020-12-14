@@ -21,7 +21,7 @@ public class MovimentacaoRepository implements MovimentacaoDAO {
 
 		String sql = "INSERT INTO MOVIMENTACAO (DATA, ID_CONTA, VALOR, TIPO) VALUES (SYSDATE, ?, ?, ?)";
 
-		return jdbc.update(sql, movimentacao.getData(), movimentacao.getIdConta(),  movimentacao.getValor(), movimentacao.getTipo(),);
+		return jdbc.update(sql, movimentacao.getData(), movimentacao.getIdConta(),  movimentacao.getValor(), movimentacao.getTipo() );
 
 	}
 
