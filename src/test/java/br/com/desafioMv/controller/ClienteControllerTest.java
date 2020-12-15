@@ -1,8 +1,12 @@
 package br.com.desafioMv.controller;
 
+import java.util.List;
+
+import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +20,7 @@ import br.com.desafioMv.persistence.repository.ClienteRepository;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @AutoConfigureMockMvc
 public class ClienteControllerTest {
 
@@ -45,12 +50,13 @@ public class ClienteControllerTest {
 		cliente.getEnderecos().add(endereco);
 	}
 
-	@Test
+	//@Test
 	public void testInsert() {
 
 		try {
 
 			long insertCliente = clienteCrud.insert(cliente);
+			
 			cliente.setId(insertCliente);
 			
 		} catch (Exception exception) {
@@ -59,7 +65,7 @@ public class ClienteControllerTest {
 
 	}
 	
-	@Test
+	//@Test
 	public void testUpdate() {
 		
 		try {
@@ -79,14 +85,44 @@ public class ClienteControllerTest {
 	public void testGetById() {
 		
 		try {
-						
-			Cliente getCliente = clienteCrud.getById(cliente.getId());
+			
+			Cliente getCliente = clienteCrud.getById(29);
 			
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
 		
 	}
+	
+	//@Test
+	public void testgetByWhere() {
+		
+		try {
+			
+			List<Cliente> listCliente = clienteCrud.getByWhere("AND NOME = 'Fabio Silva'");
+			
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+		
+	}
+	
+	//@Test
+	public void testDelete() {
+				
+		try {
+			
+			cliente.setId(29);
+			
+			int deleteCliente = clienteCrud.delete(cliente);
+			
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+		
+	}
+	
+	
 	
 
 	public static String asJsonString(final Object obj) {

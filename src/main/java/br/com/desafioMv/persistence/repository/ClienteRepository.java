@@ -49,7 +49,6 @@ public class ClienteRepository implements ClienteDAO {
 
 		String sql = "DELETE FROM CLIENTE WHERE ID = ?";
 		
-		
 		return jdbc.update(sql, cliente.getId() );
 
 	}
@@ -65,7 +64,7 @@ public class ClienteRepository implements ClienteDAO {
 	
 	
 	@Override
-	public Cliente getById(long id) {
+	public Cliente getById(int id) {
 
 		String sql = "SELECT * FROM CLIENTE WHERE ID = ?";
 		
@@ -77,7 +76,7 @@ public class ClienteRepository implements ClienteDAO {
 	@Override
 	public List<Cliente> getByWhere(String where) {
 
-		String sql = "SELECT * FROM CLIENTE WHERE 1 " + where;
+		String sql = "SELECT * FROM CLIENTE WHERE 1 = 1 " + where;
 		
 		return jdbc.query(sql, new BeanPropertyRowMapper<Cliente>(Cliente.class));
 
