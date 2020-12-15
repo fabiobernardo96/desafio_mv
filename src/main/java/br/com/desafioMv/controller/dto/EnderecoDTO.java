@@ -24,7 +24,7 @@ public class EnderecoDTO {
 	
 	private int cep;
 
-	private int idCliente;
+	private long idCliente;
 	
 	public EnderecoDTO(Endereco endereco) {
 

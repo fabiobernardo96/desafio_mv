@@ -1,6 +1,8 @@
 package br.com.desafioMv.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +19,9 @@ public class Cliente implements Serializable {
 
 	private String email;
 
-	private long telefone;
+	private String telefone;
 
-	private long cpfCnpj;
-
+	private String cpfCnpj;
+	
+	private List<Endereco> enderecos = new ArrayList<Endereco>();
 }

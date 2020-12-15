@@ -14,9 +14,9 @@ public class ClienteDTO {
 	
 	private String email;
 	
-	private long telefone;
+	private String telefone;
 	
-	private long cpfCnpj;
+	private String cpfCnpj;
 	
 	public ClienteDTO(Cliente cliente) {
 

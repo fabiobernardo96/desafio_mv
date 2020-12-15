@@ -1,28 +1,63 @@
 package br.com.desafioMv.persistence.repository;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import br.com.desafioMv.model.Cliente;
+import br.com.desafioMv.model.Endereco;
 import br.com.desafioMv.persistence.ClienteDAO;
 
 @Repository
 public class ClienteRepository implements ClienteDAO {
 
 	@Autowired
+	private EnderecoRepository enderecoRepository;
+	
+	@Autowired
 	private JdbcTemplate jdbc;
 
+//	@Override
+//	public long insert(Cliente cliente) {
+//
+//		String sql = "INSERT INTO CLIENTE (ID, NOME, EMAIL, TELEFONE, CPF_CNPJ) VALUES (seq_cliente.nextval, ?, ?, ?, ?)";
+//		
+//		int id = jdbc.update(sql, cliente.getNome(), cliente.getEmail(), cliente.getTelefone(), cliente.getCpfCnpj() );
+//		
+//		for(Endereco endereco: cliente.getEnderecos()) {
+//			endereco.setIdCliente(id);
+//			enderecoRepository.insert(endereco);
+//		}
+//		
+//		return id;
+//	}
+	
 	@Override
-	public int insert(Cliente cliente) {
-
-		String sql = "INSERT INTO CLIENTE (ID, NOME, EMAIL, TELEFONE, CPF_CNPJ) VALUES (seq_cliente.nextval, ?, ?, ?, ?)";
+	public long insert(Cliente cliente) {
+	    String insertSql = "INSERT INTO CLIENTE (ID, NOME, EMAIL, TELEFONE, CPF_CNPJ) VALUES (seq_cliente.nextval, ?, ?, ?, ?)";
+	    KeyHolder keyHolder = new GeneratedKeyHolder();
+	    jdbc.update(connection -> {
+	      PreparedStatement ps = connection.prepareStatement(insertSql, new String[] { "ID" });
+	        ps.setString(1,	cliente.getNome() );
+	        ps.setString(2, cliente.getEmail() );
+	        ps.setString(3,	cliente.getTelefone() );
+	        ps.setString(4, cliente.getCpfCnpj() );
+	      return ps;
+	    }, keyHolder);
+	    
+		for(Endereco endereco: cliente.getEnderecos()) {
+			endereco.setIdCliente(keyHolder.getKey().longValue());
+			enderecoRepository.insert(endereco);
+		}
 		
-		return jdbc.update(sql, cliente.getNome(), cliente.getEmail(), cliente.getTelefone(), cliente.getCpfCnpj() );
-	}
+	    return keyHolder.getKey().longValue();
+	  }
 
 	@Override
 	public int delete(Cliente cliente) {

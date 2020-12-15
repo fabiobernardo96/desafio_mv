@@ -27,6 +27,6 @@ public class Endereco implements Serializable {
 
 	private int cep;
 
-	private int idCliente;	
+	private long idCliente;	
 		
 }

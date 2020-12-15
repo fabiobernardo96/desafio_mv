@@ -6,7 +6,7 @@ import br.com.desafioMv.model.Cliente;
 
 public interface ClienteDAO {
 	
-	public int insert(Cliente cliente);
+	public long insert(Cliente cliente);
 
 	public int delete(Cliente cliente);
 
