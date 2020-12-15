@@ -56,7 +56,7 @@ public class ClienteController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@PutMapping(value = "/update",  consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PutMapping(value = "/update/",  consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<ClienteDTO> put(@RequestBody Cliente cliente) {
 
 		repository.update(cliente);

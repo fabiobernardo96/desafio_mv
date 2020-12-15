@@ -12,7 +12,7 @@ public class EnderecoDTO {
 
 	private String rua;
 
-	private int numero;
+	private String numero;
 
 	private String bairro;
  
@@ -22,7 +22,7 @@ public class EnderecoDTO {
 	
 	private String pais;
 	
-	private int cep;
+	private String cep;
 
 	private long idCliente;
 	

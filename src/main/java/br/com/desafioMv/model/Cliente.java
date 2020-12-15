@@ -13,7 +13,7 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class Cliente implements Serializable {
 
-	private int id;
+	private long id;
 
 	private String nome;
 

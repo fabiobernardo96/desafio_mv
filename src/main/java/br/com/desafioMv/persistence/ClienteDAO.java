@@ -12,7 +12,7 @@ public interface ClienteDAO {
 
 	public int update(Cliente cliente);
 
-	public Cliente getById(int id);
+	public Cliente getById(long id);
 
 	public List<Cliente> getByWhere(String where);
 		

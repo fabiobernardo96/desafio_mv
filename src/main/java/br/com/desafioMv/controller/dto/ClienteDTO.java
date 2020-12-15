@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class ClienteDTO {
 	
-	private int id;
+	private long id;
 	
 	private String nome;
 	

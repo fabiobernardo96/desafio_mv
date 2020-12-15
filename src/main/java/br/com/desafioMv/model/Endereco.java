@@ -15,7 +15,7 @@ public class Endereco implements Serializable {
 
 	private String rua;
 
-	private int numero;
+	private String numero;
 
 	private String bairro;
 
@@ -25,7 +25,7 @@ public class Endereco implements Serializable {
 
 	private String pais;
 
-	private int cep;
+	private String cep;
 
 	private long idCliente;	
 		

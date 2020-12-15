@@ -1,22 +1,18 @@
 package br.com.desafioMv.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.desafioMv.model.Cliente;
 import br.com.desafioMv.model.Endereco;
+import br.com.desafioMv.persistence.repository.ClienteRepository;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -24,7 +20,7 @@ import br.com.desafioMv.model.Endereco;
 public class ClienteControllerTest {
 
 	@Autowired
-	private MockMvc mockMvc;
+	private ClienteRepository clienteCrud;
 
 	private static Cliente cliente = new Cliente();
 
@@ -38,13 +34,13 @@ public class ClienteControllerTest {
 		cliente.setCpfCnpj("11363879420");
 		
 		Endereco endereco = new Endereco();
-		endereco.setNumero(155);
-		endereco.setRua("rua");
-		endereco.setBairro("bairro");
-		endereco.setCidade("cidade");
-		endereco.setEstado("estado");
-		endereco.setPais("pais");
-		endereco.setCep(12314556);
+		endereco.setNumero("155");
+		endereco.setRua("Das Rosas");
+		endereco.setBairro("Imbiribeira");
+		endereco.setCidade("Recife");
+		endereco.setEstado("PE");
+		endereco.setPais("Brasil");
+		endereco.setCep("53300260");
 		
 		cliente.getEnderecos().add(endereco);
 	}
@@ -54,9 +50,9 @@ public class ClienteControllerTest {
 
 		try {
 
-			this.mockMvc.perform(post("/cliente/insert").content(asJsonString(cliente))
-					.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON));
-
+			long insertCliente = clienteCrud.insert(cliente);
+			cliente.setId(insertCliente);
+			
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
@@ -65,32 +61,33 @@ public class ClienteControllerTest {
 	
 	@Test
 	public void testUpdate() {
-
+		
 		try {
-
-			this.mockMvc.perform(put("/cliente/update").content(asJsonString(cliente))
-					.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON));
-
+			
+			cliente.setNome("Fabio Silva");
+			cliente.setEmail("fabio.silva@gmail.com");
+				
+			long updateCliente = clienteCrud.update(cliente);
+			
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
-
+		
 	}
 	
 	@Test
-	public void testGetByWhere() {
-
+	public void testGetById() {
+		
 		try {
-
-			this.mockMvc.perform(post("/cliente/").content(asJsonString(cliente))
-					.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON));
-
+						
+			Cliente getCliente = clienteCrud.getById(cliente.getId());
+			
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
-
+		
 	}
-
+	
 
 	public static String asJsonString(final Object obj) {
 		try {

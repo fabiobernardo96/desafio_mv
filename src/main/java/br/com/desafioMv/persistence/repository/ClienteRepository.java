@@ -23,21 +23,6 @@ public class ClienteRepository implements ClienteDAO {
 	@Autowired
 	private JdbcTemplate jdbc;
 
-//	@Override
-//	public long insert(Cliente cliente) {
-//
-//		String sql = "INSERT INTO CLIENTE (ID, NOME, EMAIL, TELEFONE, CPF_CNPJ) VALUES (seq_cliente.nextval, ?, ?, ?, ?)";
-//		
-//		int id = jdbc.update(sql, cliente.getNome(), cliente.getEmail(), cliente.getTelefone(), cliente.getCpfCnpj() );
-//		
-//		for(Endereco endereco: cliente.getEnderecos()) {
-//			endereco.setIdCliente(id);
-//			enderecoRepository.insert(endereco);
-//		}
-//		
-//		return id;
-//	}
-	
 	@Override
 	public long insert(Cliente cliente) {
 	    String insertSql = "INSERT INTO CLIENTE (ID, NOME, EMAIL, TELEFONE, CPF_CNPJ) VALUES (seq_cliente.nextval, ?, ?, ?, ?)";
@@ -74,16 +59,15 @@ public class ClienteRepository implements ClienteDAO {
 
 		String sql = "UPDATE CLIENTE SET NOME = ?, EMAIL = ?, TELEFONE = ? WHERE ID = ?";
 		
-		return jdbc.update(sql, cliente.getId(), cliente.getNome(), cliente.getEmail(), cliente.getTelefone() );
+		return jdbc.update(sql, cliente.getNome(), cliente.getEmail(), cliente.getTelefone(), cliente.getId() );
 		
 	}
 	
 	
 	@Override
-	public Cliente getById(int id) {
+	public Cliente getById(long id) {
 
 		String sql = "SELECT * FROM CLIENTE WHERE ID = ?";
-		
 		
 		return jdbc.queryForObject(sql, new Object[] { id },
 				new BeanPropertyRowMapper<Cliente>(Cliente.class));
