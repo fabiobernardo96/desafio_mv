@@ -43,7 +43,7 @@ public class EnderecoRepository implements EnderecoDAO {
 
 		return jdbc.update(sql,
 							endereco.getRua(), endereco.getNumero(), endereco.getBairro(), endereco.getCidade(),
-						endereco.getEstado(), endereco.getPais(), endereco.getCep() );
+						endereco.getEstado(), endereco.getPais(), endereco.getCep(), endereco.getId() );
 
 	}
 
@@ -59,7 +59,7 @@ public class EnderecoRepository implements EnderecoDAO {
 	@Override
 	public List<Endereco> getByWhere(String where) {
 
-		String sql = "SELECT * FROM ENDERECO WHERE 1 " + where;
+		String sql = "SELECT * FROM ENDERECO WHERE 1 = 1 " + where;
 
 		return jdbc.query(sql, new BeanPropertyRowMapper<Endereco>(Endereco.class));
 

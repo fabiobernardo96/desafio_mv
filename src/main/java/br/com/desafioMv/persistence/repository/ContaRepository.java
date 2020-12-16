@@ -27,7 +27,7 @@ public class ContaRepository implements ContaDAO {
 
 	@Override
 	public int delete(Conta conta) {
-
+		
 		String sql = "UPDATE FROM CONTA SET ACTIVE = 'N' WHERE ID = ?";
 
 		return jdbc.update(sql, conta.getId());

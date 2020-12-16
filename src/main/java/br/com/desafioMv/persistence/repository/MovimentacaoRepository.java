@@ -54,7 +54,7 @@ public class MovimentacaoRepository implements MovimentacaoDAO {
 	@Override
 	public List<Movimentacao> getByWhere(String where) {
 
-		String sql = "SELECT * FROM MOVIMENTACAO WHERE 1 " + where;
+		String sql = "SELECT * FROM MOVIMENTACAO WHERE 1 = 1 " + where;
 
 		return jdbc.query(sql, new BeanPropertyRowMapper<Movimentacao>(Movimentacao.class));
 

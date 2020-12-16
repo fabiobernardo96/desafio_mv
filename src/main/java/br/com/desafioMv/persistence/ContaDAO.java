@@ -7,7 +7,7 @@ import br.com.desafioMv.model.Conta;
 public interface ContaDAO {
 	
 	public int insert(Conta conta);
-
+		
 	public int delete(Conta conta);
 
 	public int update(Conta conta);
@@ -15,5 +15,6 @@ public interface ContaDAO {
 	public Conta getById(int id);
 
 	public  List<Conta> getByWhere(String where);
+
 
 }

@@ -64,11 +64,11 @@ public class ClienteRepository implements ClienteDAO {
 	
 	
 	@Override
-	public Cliente getById(int id) {
+	public Cliente getById(int ID) {
 
 		String sql = "SELECT * FROM CLIENTE WHERE ID = ?";
 		
-		return jdbc.queryForObject(sql, new Object[] { id },
+		return jdbc.queryForObject(sql, new Object[] { ID },
 				new BeanPropertyRowMapper<Cliente>(Cliente.class));
 
 	}
