@@ -1,5 +1,5 @@
 # desafioMv
 
-Projeto criado utilizando as tecnologias spring e gradlew.
+Projeto criado utilizando as tecnologias Spring e Gradle.
 
 
